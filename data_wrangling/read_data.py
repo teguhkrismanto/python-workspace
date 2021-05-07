@@ -14,7 +14,7 @@ print (csv_data)
 # print (csv_data.tail())
 
 # display row x column
-print(csv_data.shape())
+# print(csv_data.shape)
 
 # display only specific column('Age')
 # print (csv_data['Age'])
