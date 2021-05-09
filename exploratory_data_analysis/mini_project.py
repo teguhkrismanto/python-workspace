@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-order_df = pd.read_csv("https://storage.googleapis.com/dqlab-dataset/order.csv")
+order_df = pd.read_csv("./datasets/order.csv")
 
 # The median price paid by the customer for each payment method
 median_price = order_df["price"].groupby(order_df["payment_type"]).median()
