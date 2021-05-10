@@ -3,7 +3,7 @@ import numpy as np
 import io
 # import pandas_profiling
 
-retail_raw = pd.read_csv('https://storage.googleapis.com/dqlab-dataset/retail_raw_reduced_data_quality.csv')
+retail_raw = pd.read_csv('./datasets/retail_raw_reduced_data_quality.csv')
 
 # print(retail_raw.dtypes)
 
