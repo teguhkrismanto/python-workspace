@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset https://storage.googleapis.com/dqlab-dataset/LO4/global_air_quality_4000rows.csv
-gaq = pd.read_csv('https://storage.googleapis.com/dqlab-dataset/LO4/global_air_quality_4000rows.csv')
+gaq = pd.read_csv('./datasets/global_air_quality_4000rows.csv')
 
 # Cetak 5 data teratas
 print('Sebelum diubah dalam format datetime:\n', gaq.head())
