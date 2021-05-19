@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 
-dataset = pd.read_csv('https://storage.googleapis.com/dqlab-dataset/pythonTutorial/online_raw.csv')
+dataset = pd.read_csv('./datasets/online_raw.csv')
 # print('Shape dataset:', dataset.shape)
 # print('\nLima data teratas:\n', dataset.head())
 # print('\nInformasi dataset:')
