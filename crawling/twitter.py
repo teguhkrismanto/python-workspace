@@ -33,4 +33,4 @@ if __name__ == '__main__':
     stream = Stream(auth, listener)
 
     # stream by keyword & user
-    stream.filter(follow=['#{twitter_id}'], track=['#{keyword_0}', '#{keyword_n}'])
+    stream.filter(follow=['${twitter_id}'], track=['${keyword_0}', '${keyword_n}'])
