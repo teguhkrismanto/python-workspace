@@ -65,6 +65,18 @@ WORD2VEC_MODEL = "model.w2v"
 TOKENIZER_MODEL = "tokenizer.pkl"
 ENCODER_MODEL = "encoder.pkl"
 
-df = pd.read_csv("./datasets/training.100000.processed.noemoticon.csv", encoding =DATASET_ENCODING , names=DATASET_COLUMNS)
-print(len(df))
-print(df.head())
+df = pd.read_csv("./datasets/training.2000.processed.noemoticon.csv", encoding =DATASET_ENCODING , names=DATASET_COLUMNS)
+# print(len(df))
+# print(df.head())
+
+decode_map = {0: "NEGATIVE", 2: "NEUTRAL", 4: "POSITIVE"}
+
+def decode_sentiment(label):
+    return decode_map[int(label)]
+
+df_target = df.target.apply(lambda x: decode_sentiment(x))
+target_cnt = Counter(df_target)
+
+# plt.figure(figsize=(16,8))
+# plt.bar(target_cnt.keys(), target_cnt.values())
+# plt.title("Dataset labels distribuition")
