@@ -1,3 +1,4 @@
+from os import replace
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -95,4 +96,10 @@ tweets['text_preprocessed'] = tweets['text_preprocessed'].apply(stemmingText)
 
 tweets.drop_duplicates(subset='text_clean', inplace=True)
 
-print(tweets)
+for i, text in enumerate(tweets['text_preprocessed']):
+    tweets['text_preprocessed'][i] = tweets['text_preprocessed'][i].replace("'","").replace(",","").replace("[","").replace("]","")
+    list_words = []
+    for word in tweets['text_preprocessed'][i].split():
+        list_words.append(word)
+
+    tweets['text_preprocessed'][i] = list_words
