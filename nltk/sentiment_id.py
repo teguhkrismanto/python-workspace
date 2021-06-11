@@ -1,8 +1,10 @@
 from os import replace
+from nltk.util import pr
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import csv
 
 import twint
 import nest_asyncio
@@ -96,10 +98,51 @@ tweets['text_preprocessed'] = tweets['text_preprocessed'].apply(stemmingText)
 
 tweets.drop_duplicates(subset='text_clean', inplace=True)
 
-for i, text in enumerate(tweets['text_preprocessed']):
-    tweets['text_preprocessed'][i] = tweets['text_preprocessed'][i].replace("'","").replace(",","").replace("[","").replace("]","")
-    list_words = []
-    for word in tweets['text_preprocessed'][i].split():
-        list_words.append(word)
+tweets.to_csv(r'./datasets/tweets_data_clean.csv', index = False, header = True,index_label=None)
 
-    tweets['text_preprocessed'][i] = list_words
+# tweets = pd.read_csv('tweets_data_clean.csv')
+
+# for i, text in enumerate(tweets['text_preprocessed']):
+#     tweets['text_preprocessed'][i] = tweets['text_preprocessed'][i].replace("'", "")\
+#                                             .replace(',','').replace(']','').replace('[','')
+#     list_words=[]
+#     for word in tweets['text_preprocessed'][i].split():
+#         list_words.append(word)
+        
+#     tweets['text_preprocessed'][i] = list_words
+    
+# lexicon_positive = dict()
+# with open('../datasets/lexicon_positive.csv', 'r') as csvfile:
+#     reader = csv.reader(csvfile, delimiter=',')
+#     for row in reader:
+#         lexicon_positive[row[0]] = int(row[1])
+
+# lexicon_negative = dict()
+# with open('../datasets/lexicon_negative.csv', 'r') as csvfile:
+#     reader = csv.reader(csvfile, delimiter=',')
+#     for row in reader:
+#         lexicon_negative[row[0]] = int(row[1])
+
+# def sentiment_analysis_lexicon_indonesia(text):
+#     #for word in text:
+#     score = 0
+#     for word in text:
+#         if (word in lexicon_positive):
+#             score = score + lexicon_positive[word]
+#     for word in text:
+#         if (word in lexicon_negative):
+#             score = score + lexicon_negative[word]
+#     polarity=''
+#     if (score > 0):
+#         polarity = 'positive'
+#     elif (score < 0):
+#         polarity = 'negative'
+#     else:
+#         polarity = 'neutral'
+#     return score, polarity
+
+# results = tweets['text_preprocessed'].apply(sentiment_analysis_lexicon_indonesia)
+# results = list(zip(*results))
+# tweets['polarity_score'] = results[0]
+# tweets['polarity'] = results[1]
+# print(tweets)
